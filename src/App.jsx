@@ -1,4 +1,5 @@
 import "./App.css";
+<<<<<<< HEAD
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
 
@@ -14,6 +15,11 @@ function App() {
       </div>
     </div>
   );
+=======
+
+function App() {
+  return <>TODOLIST</>;
+>>>>>>> 2e4001236f9132b92d82553c8b13f604afb8ddc7
 }
 
 export default App;

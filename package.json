@@ -15,7 +15,10 @@
     "postcss": "^8.4.38",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+<<<<<<< HEAD
     "react-icons": "^5.2.1",
+=======
+>>>>>>> 2e4001236f9132b92d82553c8b13f604afb8ddc7
     "tailwindcss": "^3.4.4"
   },
   "devDependencies": {
