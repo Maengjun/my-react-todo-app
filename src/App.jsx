@@ -2,14 +2,17 @@ import './App.css';
 import TodoInput from './components/TodoInput';
 import TodoList from './components/TodoList';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function App() {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3001/todos')
-      .then((res) => res.json())
-      .then((date) => setTodos(date))
+    axios
+      .get('http://localhost:3001/todos')
+      .then((res) => {
+        setTodos(res.data);
+      })
       .catch((err) => {
         console.error('Error occured on fetching', err);
       });
