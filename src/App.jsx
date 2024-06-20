@@ -1,30 +1,28 @@
 import './App.css';
 import TodoInput from './components/TodoInput';
 import TodoList from './components/TodoList';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
-  const [todos, setTodos] = useState([
-    {
-      title: '리액트 공부하기',
-      completed: true,
-    },
-    {
-      title: '축구 연습하기',
-      completed: false,
-    },
-    {
-      title: '한강가기',
-      completed: false,
-    },
-  ]);
+  const [todos, setTodos] = useState([]);
 
+  useEffect(() => {
+    fetch('http://localhost:3001/todos')
+      .then((res) => res.json())
+      .then((date) => setTodos(date))
+      .catch((err) => {
+        console.error('Error occured on fetching', err);
+      });
+  });
+
+  // 할일의 완료상태 토글
   const toggleComplete = (index) => {
     const newTodos = [...todos];
     newTodos[index].completed = !newTodos[index].completed;
     setTodos(newTodos);
   };
 
+  //삭제
   const deleteTodo = (index) => {
     const newTodos = todos.filter((_, i) => i !== index);
     setTodos(newTodos);

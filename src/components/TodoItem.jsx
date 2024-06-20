@@ -5,10 +5,12 @@ function TodoItem({ todo, index, toggleComplete, deleteTodo, modifyTodo }) {
   const [isEditing, setIsEditing] = useState(false);
   const [newTitle, setNewTitle] = useState(todo.title);
 
+  //편집활성화
   const handleEditClick = () => {
     setIsEditing(true);
   };
 
+  //수정저장
   const handleSaveClick = () => {
     modifyTodo(index, {
       ...todo,
@@ -17,6 +19,7 @@ function TodoItem({ todo, index, toggleComplete, deleteTodo, modifyTodo }) {
     setIsEditing(false);
   };
 
+  //Enter누르면 저장되는기능
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       handleSaveClick();
