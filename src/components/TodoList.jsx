@@ -1,13 +1,11 @@
-import React from 'react';
 import TodoItem from './TodoItem';
 
-function TodoList({ todos, toggleComplete, deleteTodo, modifyTodo }) {
+const TodoList = ({ todos, toggleComplete, deleteTodo, modifyTodo }) => {
   return (
-    <ul className="mt-4">
-      {todos.map((todo, index) => (
+    <ul className="list-disc pl-5">
+      {todos.map((todo) => (
         <TodoItem
-          key={index}
-          index={index}
+          key={todo.id}
           todo={todo}
           toggleComplete={toggleComplete}
           deleteTodo={deleteTodo}
@@ -16,6 +14,6 @@ function TodoList({ todos, toggleComplete, deleteTodo, modifyTodo }) {
       ))}
     </ul>
   );
-}
+};
 
 export default TodoList;

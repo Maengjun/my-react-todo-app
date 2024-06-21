@@ -1,25 +1,19 @@
 import { FiEdit2, FiTrash2 } from 'react-icons/fi';
 import { useState } from 'react';
 
-function TodoItem({ todo, index, toggleComplete, deleteTodo, modifyTodo }) {
+function TodoItem({ todo, toggleComplete, deleteTodo, modifyTodo }) {
   const [isEditing, setIsEditing] = useState(false);
   const [newTitle, setNewTitle] = useState(todo.title);
 
-  //편집활성화
   const handleEditClick = () => {
     setIsEditing(true);
   };
 
-  //수정저장
   const handleSaveClick = () => {
-    modifyTodo(index, {
-      ...todo,
-      title: newTitle,
-    });
+    modifyTodo(todo.id, newTitle);
     setIsEditing(false);
   };
 
-  //Enter누르면 저장되는기능
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       handleSaveClick();
@@ -39,7 +33,7 @@ function TodoItem({ todo, index, toggleComplete, deleteTodo, modifyTodo }) {
         />
       ) : (
         <span
-          onClick={() => toggleComplete(index)}
+          onClick={() => toggleComplete(todo.id)}
           className={`flex-grow cursor-pointer ${
             todo.completed ? 'line-through' : ''
           }`}
@@ -59,12 +53,12 @@ function TodoItem({ todo, index, toggleComplete, deleteTodo, modifyTodo }) {
           <>
             <button
               onClick={handleEditClick}
-              className="p-2 rounded-full shadow-md transition duration-300 bg-black hover:bg-gray-600 text-white"
+              className="p-2 rounded-full shadow-md transition duration-300 bg-orange-500 hover:bg-orange-600 text-white"
             >
               <FiEdit2 />
             </button>
             <button
-              onClick={() => deleteTodo(index)}
+              onClick={() => deleteTodo(todo.id)}
               className="p-2 rounded-full shadow-md transition duration-300 bg-red-500 hover:bg-red-600 text-white"
             >
               <FiTrash2 />
